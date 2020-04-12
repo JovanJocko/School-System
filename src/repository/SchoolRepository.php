@@ -3,6 +3,7 @@
 namespace Repository;
 
 use Core\DBClass;
+use Entity\School;
 use PDO;
 
 require '../etc/config.php';
@@ -16,7 +17,7 @@ class SchoolRepository implements RepositoryInterface
     /**
      * @param $id
      *
-     * @return array
+     * @return \Entity\School
      */
     public static function getById($id)
     {
@@ -33,6 +34,6 @@ class SchoolRepository implements RepositoryInterface
         $stmt->execute([$id]);
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        return $data;
+        return new School($data);
     }
 }

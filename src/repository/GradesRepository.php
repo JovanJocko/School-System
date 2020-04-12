@@ -3,6 +3,7 @@
 namespace Repository;
 
 use Core\DBClass;
+use Entity\Grade;
 use PDO;
 
 /**
@@ -22,7 +23,12 @@ class GradesRepository implements RepositoryInterface
         $queryString = "SELECT * FROM `grades` WHERE `student_id` = ?";
         $stmt = $db->getConnection()->prepare($queryString);
         $stmt->execute([$id]);
-        $grades = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $grades = [];
+
+        foreach ($data as $grade) {
+            $grades[] = new Grade($grade);
+        }
 
         return $grades;
     }

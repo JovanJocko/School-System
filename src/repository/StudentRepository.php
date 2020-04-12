@@ -3,6 +3,7 @@
 namespace Repository;
 
 use Core\DBClass;
+use Entity\Student;
 use PDO;
 
 /**
@@ -14,7 +15,7 @@ class StudentRepository implements RepositoryInterface
     /**
      * @param $id
      *
-     * @return array
+     * @return \Entity\Student
      */
     public static function getById($id)
     {
@@ -24,7 +25,7 @@ class StudentRepository implements RepositoryInterface
         $stmt->execute([$id]);
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        return $data;
+        return new Student($data);
     }
 
     /**
@@ -35,7 +36,12 @@ class StudentRepository implements RepositoryInterface
         $db = DBClass::getInstance();
         $queryString = "SELECT * FROM `student` ORDER BY `school_id`";
         $stmt = $db->query($queryString);
-        $students = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $students = [];
+
+        foreach ($data as $student) {
+            $students[] = new Student($student);
+        }
 
         return $students;
     }

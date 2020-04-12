@@ -2,6 +2,7 @@
   "autoload": {
     "psr-4": {
       "Core\\": "src/core",
+      "Entity\\": "src/entity",
       "Repository\\": "src/repository",
       "Router\\": "src/router"
     }
