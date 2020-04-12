@@ -1,0 +1,31 @@
+<?php
+$array = $this->viewData;
+?>
+
+<table border="1" style="text-align: center; margin-bottom: 30px">
+
+    <?php
+    foreach ($array as $school => $students) { ?>
+        <tr>
+            <th><?= $school ?></th>
+            <th><?= $students[0]['description'] ?></th>
+            <th><?= $students[0]['outputType'] ?></th>
+        </tr>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Action</th>
+        </tr>
+        <?php
+        foreach ($students as $student) { ?>
+            <tr>
+                <td><?= $student['id'] ?></td>
+                <td><?= $student['name'] ?></td>
+                <td><a href="/?student=<?= $student['id'] ?>">View <?= $student['outputType'] ?></a></td>
+            </tr>
+        <?php
+        }
+    }
+    ?>
+
+</table>

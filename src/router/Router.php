@@ -29,7 +29,7 @@ class Router
     private $routes;
 
     /**
-     * The methods adds each route defined to the $routes array
+     * The method adds each route defined to the $routes array
      *
      * @param $route
      * @param $controllerName
@@ -39,7 +39,7 @@ class Router
     }
 
     /**
-     * Execute the specified route defined
+     * Execute the requested route if it's defined
      */
     function execute() {
         $queryString = $_SERVER['QUERY_STRING'];
@@ -56,6 +56,7 @@ class Router
             $controllerName = self::DEFAULT_CONTROLLER;
         }
 
+        // Check if that controller exists
         if (file_exists('../src/controller/' . $controllerName . '.php')) {
             $controller = new $controllerNameSpace();
             $controller->execute($params);
