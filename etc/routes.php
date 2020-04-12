@@ -4,4 +4,7 @@ use Router\Router as Router;
 
 $router = new Router();
 
+$router->addRoute(Router::HOME, 'Home');
+$router->addRoute('/student', 'Student');
+
 $router->execute();

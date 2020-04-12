@@ -33,7 +33,7 @@ class Student extends AbstractEntity
      */
     protected $finalResult;
     /**
-     * @var int $avgGrade Average grade for student
+     * @var float $avgGrade Average grade for student
      */
     protected $avgGrade;
 
@@ -62,10 +62,10 @@ class Student extends AbstractEntity
         return [
             'id' => $this->getId(),
             'name' => $this->getName(),
-            'finalResult' => $this->getFinalResult(),
-            'avgGrade' => $this->getAvgGrade(),
             'school' => $this->getSchool()->getData(),
-            'grades' => $this->getGrades()
+            'grades' => $this->getGrades(),
+            'avgGrade' => $this->getAvgGrade(),
+            'finalResult' => $this->getFinalResult()
         ];
     }
 
@@ -118,7 +118,7 @@ class Student extends AbstractEntity
             $finalResult = $avg >= 7.0 ? "Pass" : "Fail";
         }
 
-        $this->setAvgGrade($avg);
+        $this->setAvgGrade(number_format($avg, 2));
         $this->setFinalResult($finalResult);
     }
 
@@ -203,17 +203,17 @@ class Student extends AbstractEntity
     }
 
     /**
-     * @return int
+     * @return float
      */
-    public function getAvgGrade(): int
+    public function getAvgGrade(): float
     {
         return $this->avgGrade;
     }
 
     /**
-     * @param int $avgGrade
+     * @param float $avgGrade
      */
-    public function setAvgGrade(int $avgGrade): void
+    public function setAvgGrade(float $avgGrade): void
     {
         $this->avgGrade = $avgGrade;
     }

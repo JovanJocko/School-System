@@ -1,10 +1,15 @@
 {
   "autoload": {
     "psr-4": {
+      "Controller\\": "src/controller",
       "Core\\": "src/core",
       "Entity\\": "src/entity",
       "Repository\\": "src/repository",
-      "Router\\": "src/router"
+      "Router\\": "src/router",
+      "Views\\": "src/views"
     }
+  },
+  "require": {
+    "spatie/array-to-xml": "^2.11"
   }
 }
