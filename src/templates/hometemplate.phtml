@@ -5,7 +5,7 @@ $array = $this->viewData;
 <table border="1" style="text-align: center; margin-bottom: 30px">
 
     <?php
-    foreach ($array as $school => $students) { ?>
+    foreach ($array['schools'] as $school => $students) { ?>
         <tr>
             <th><?= $school ?></th>
             <th><?= $students[0]['description'] ?></th>
@@ -29,3 +29,41 @@ $array = $this->viewData;
     ?>
 
 </table>
+
+<!--<h3>Add Student</h3>-->
+<!--<form name="addStudent" action="/saveStudent">-->
+<!--    <label for="student_name">Student name</label>-->
+<!--    <input type="text" id="student_name" name="student_name"><br>-->
+<!--    <label for="grades">Grades (max 4 grades divided by comma)</label>-->
+<!--    <input type="text" id="grades" name="grades"><br>-->
+<!--    <label for="school">School</label>-->
+<!--    <select id="school">-->
+<!---->
+<!--    </select>-->
+<!--    <input type="submit" value="Add Student">-->
+<!--</form>-->
+
+<h3>Add School</h3>
+<form name="addSchool" action="/addSchool" method="post">
+    <label for="school_name">School name</label>
+    <input type="text" id="school_name" name="school_name"><br>
+    <label for="grading_type">Grading type</label>
+    <select id="grading_type" name="gradingtype">
+        <?php
+        foreach ($array['gradigTypes'] as $gradingType) { ?>
+            <option value="<?= $gradingType['id'] ?>"><?= $gradingType['type'] ?></option>
+        <?php
+        }
+        ?>
+    </select><br>
+    <label for="output_type">Output type</label>
+    <select id="output_type" name="outputtype">
+        <?php
+        foreach ($array['outputTypes'] as $outputType) { ?>
+            <option value="<?= $outputType['id'] ?>"><?= $outputType['type'] ?></option>
+        <?php
+        }
+        ?>
+    </select><br>
+    <input type="submit" value="Add School">
+</form>
