@@ -1,16 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: jovan
- * Date: 12.4.20.
- * Time: 16.38
- */
 
 namespace Controller;
 
 use Repository\SchoolRepository;
 
-
+/**
+ * Class AddSchool
+ * @package Controller
+ */
 class AddSchool extends AbstractController
 {
 
@@ -22,6 +19,13 @@ class AddSchool extends AbstractController
     public function execute($param)
     {
         $data = [];
-        $update = SchoolRepository::addSchool($data);
+        if (isset($_POST['school_name'])) {
+            $data['school_name'] = $_POST['school_name'];
+            $data['grading_type'] = $_POST['grading_type'];
+            $data['output_type'] = $_POST['output_type'];
+            SchoolRepository::addSchool($data);
+            header("Location: /");
+        }
+
     }
 }

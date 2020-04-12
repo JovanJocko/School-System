@@ -42,6 +42,6 @@ class SchoolRepository implements RepositoryInterface
         $db = DBClass::getInstance();
         $queryString = "INSERT INTO `school` (`name`, `output_type`, `grading_type`) VALUES (?,?,?) ";
         $stmt = $db->getConnection()->prepare($queryString);
-        $stmt->execute([$data['name'], $data['output_type'], $data['grading_type']]);
+        $stmt->execute([$data['school_name'], $data['output_type'], $data['grading_type']]);
     }
 }
