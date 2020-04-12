@@ -1,4 +1,4 @@
 <?php
 
-
-echo "init";
+require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../etc/routes.php';
